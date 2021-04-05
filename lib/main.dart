@@ -89,7 +89,7 @@ class _BasePageState extends State<BasePage> {
           Home(changePage: _goToFeed),
           FavoriteCrypto(),
           RssFeedPage(idFeed: _idFeed),
-          CalculateCrypto(),
+          // CalculateCrypto(),
           SettingsPage(),
         ]),
         bottomNavigationBar: SnakeNavigationBar.color(
@@ -118,7 +118,7 @@ class _BasePageState extends State<BasePage> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.favorite), label: 'favorite'),
             BottomNavigationBarItem(icon: Icon(Icons.rss_feed), label: 'RSS'),
-            BottomNavigationBarItem(icon: Icon(Icons.calculate), label: 'Calculate'),
+            // BottomNavigationBarItem(icon: Icon(Icons.calculate), label: 'Calculate'),
             BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
           ],
         ));

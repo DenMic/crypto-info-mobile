@@ -1,16 +1,32 @@
-# crypto_info
+# Crypto info
 
-A new Flutter project.
+Crypto info is a Flutter project, created to display information about crypto.<br />
+The crypto pricing is in real-time based on COINCAP API 2.0.
+<br /><br />
+
+<img src="assets\images\readme\Home.png" alt="Home Page" width="300"/>
+<img src="assets\images\readme\Assert_Info.png" alt="Home Page" width="300"/>
+
+<br /><br />
+The app has a list of the best Asserts of the moment, a list of your favorite asserts and a page of Rss Feeds from varius sites:
+- Cointelegraph;
+- Coinbase Blog;
+- Bitcoin News;
+- News BTC.
+
+<img src="assets\images\readme\Favorite_Crypto.png" alt="Home Page" width="300"/>
+<img src="assets\images\readme\List_chose.png" alt="Home Page" width="300"/>
+<img src="assets\images\readme\RssFeed_List.png" alt="Home Page" width="300"/>
+
+<br /><br />
+
+On the settings page you can choose your currency (EUR or USD), and your language (TODO).
+<br /><br />
+<img src="assets\images\readme\Settings.png" alt="Home Page" width="300"/>
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+All you will need is **Flutter** and your favorite IDE. <br />
+You can install flutter following this link: https://flutter.dev/docs/get-started/install
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
