@@ -4,8 +4,16 @@ Crypto info is a Flutter project, created to display information about crypto.<b
 The crypto pricing is in real-time based on COINCAP API 2.0.
 <br /><br />
 
-<img src="assets\images\readme\Home.png" alt="Home Page" width="300"/>
-<img src="assets\images\readme\Assert_Info.png" alt="Home Page" width="300"/>
+<table>
+  <tr>
+    <td>
+      <img src="assets\images\readme\Home.png" alt="Home Page" width="300"/>
+    </td>
+    <td>
+      <img src="assets\images\readme\Assert_Info.png" alt="Home Page" width="300"/>
+    </td>
+  </tr>
+</table>
 
 <br /><br />
 The app has a list of the best Asserts of the moment, a list of your favorite asserts and a page of Rss Feeds from varius sites:
@@ -14,9 +22,19 @@ The app has a list of the best Asserts of the moment, a list of your favorite as
 - Bitcoin News;
 - News BTC.
 
-<img src="assets\images\readme\Favorite_Crypto.png" alt="Home Page" width="300"/>
-<img src="assets\images\readme\List_chose.png" alt="Home Page" width="300"/>
-<img src="assets\images\readme\RssFeed_List.png" alt="Home Page" width="300"/>
+<table>
+  <tr>
+    <td>
+      <img src="assets\images\readme\Favorite_Crypto.png" alt="Home Page" width="300"/>
+    </td>
+    <td>
+      <img src="assets\images\readme\List_chose.png" alt="Home Page" width="300"/>
+    </td>
+    <td>
+      <img src="assets\images\readme\RssFeed_List.png" alt="Home Page" width="300"/>
+    </td>
+  </tr>
+</table>
 
 <br /><br />
 
