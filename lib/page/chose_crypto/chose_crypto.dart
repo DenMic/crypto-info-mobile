@@ -58,53 +58,52 @@ class _ChoseCryptoState extends State<ChoseCrypto> {
             ));
           }
 
-          return Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 45.0),
-                  child: Container(
-                    child: ListView(
-                      padding: const EdgeInsets.all(10),
-                      children: cryptoList,
-                    ),
-                  ),
+          return Stack(children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 55.0),
+              child: Container(
+                child: ListView(
+                  padding: const EdgeInsets.all(10),
+                  children: cryptoList,
                 ),
-
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                  ),
+                ],
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 17.0, top: 10, bottom: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 10.0),
+                        child: Icon(Icons.arrow_back_outlined),
                       ),
-                    ],
-                  ),
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.only(left: 17.0, top: 10, bottom: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        GestureDetector(
-                          onTap: () => Navigator.pop(context),
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 10.0),
-                            child: Icon(Icons.arrow_back_outlined),
-                          ),
-                        ),
-                        Text(
-                          "Crypto preference",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w600),
-                        ),
-                      ],
                     ),
-                  ),
+                    Text(
+                      "Crypto preference",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                    ),
+                    Container(
+                      height: 35,
+                    ),
+                  ],
                 ),
-                
-              ]);
+              ),
+            ),
+          ]);
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
         }
