@@ -5,5 +5,17 @@
   "rssFeed": "Rss Feed",
   "settings": "Settings",
   "currency": "Currency",
-  "language": "Language"
+  "language": "Language",
+  "rank": "Rank",
+  "symbol": "Symbol",
+  "price": "Price",
+  "marketcap": "Marketcap",
+  "supply": "Supply",
+  "maxSupply": "Max Supply",
+  "noItemFound": "No items were found",
+  "addCrypto": "Add Crypto",
+  "cointelegraphDesc": "Bitcoin & Ethereum news, analysis and review about technology, finance, blockchain and markets - cryptocurrency news.",
+  "coinbaseBlogDesc": "Coinbase is a digital currency wallet and platform where merchants and consumers can transact with new digital currencies like bitcoin and ethereum.",
+  "bitcoinNewsDesc": "Bitcoin.com is the world's premier 24/7 news feed covering everything bitcoin-related.",
+  "newsBTC": "NewsBTC is a news service that covers bitcoin news, technical analysis and forecasts for bitcoin and other altcoins."
 }

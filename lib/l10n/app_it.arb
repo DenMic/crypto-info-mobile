@@ -5,5 +5,17 @@
   "rssFeed": "Rss Feed",
   "settings": "Impostazioni",
   "currency": "Valuta",
-  "language": "Lingua"
+  "language": "Lingua",
+  "rank": "Posizione",
+  "symbol": "Simbolo",
+  "price": "Prezzo",
+  "marketcap": "Capitalizzazione di mercato",
+  "supply": "Offerta",
+  "maxSupply": "Massima offerta",
+  "noItemFound": "Non sono state trovate crypto preferite",
+  "addCrypto": "Aggiungi Crypto",
+  "cointelegraphDesc": "Notizie, analisi e recensioni su Bitcoin ed Ethereum su tecnologia, finanza, blockchain e mercati - notizie sulle criptovalute.",
+  "coinbaseBlogDesc": "Coinbase è un portafoglio di valuta digitale e una piattaforma in cui commercianti e consumatori possono effettuare transazioni con nuove valute digitali come bitcoin ed ethereum.",
+  "bitcoinNewsDesc": "Bitcoin.com è il principale feed di notizie 24 ore su 24, 7 giorni su 7, che copre tutto ciò che riguarda i bitcoin.",
+  "newsBTC": "NewsBTC è un servizio di notizie che copre notizie bitcoin, analisi tecniche e previsioni per bitcoin e altri altcoin."
 }

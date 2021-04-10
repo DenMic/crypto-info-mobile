@@ -72,7 +72,7 @@ class _FavoriteCryptoState extends State<FavoriteCrypto> {
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Text("No items were found"),
+                            Text(AppLocalizations.of(context).noItemFound),
                             SizedBox(
                               height: 20,
                             ),
@@ -92,7 +92,7 @@ class _FavoriteCryptoState extends State<FavoriteCrypto> {
                                 _loadCounter();
                               },
                               child: Text(
-                                'Add Crypto',
+                                AppLocalizations.of(context).addCrypto,
                                 style: TextStyle(
                                     color: Colors.grey[700], fontSize: 12),
                               ),

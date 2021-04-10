@@ -3,28 +3,28 @@
         "id": "1",
         "title": "Cointelegraph",
         "image": "assets/images/feed/cointelegraph.png",
-        "description": "Bitcoin & Ethereum news, analysis and review about technology, finance, blockchain and markets - cryptocurrency news.",
+        "description": "CointelegraphDesc",
         "urlRss": "https://cointelegraph.com/rss"
     },
     {
         "id": "2",
         "title": "The Coinbase Blog",
         "image": "assets/images/feed/CoinbaseBlog.png",
-        "description": "Coinbase is a digital currency wallet and platform where merchants and consumers can transact with new digital currencies like bitcoin and ethereum.",
+        "description": "CoinbaseBlogDesc",
         "urlRss": "https://blog.coinbase.com/feed"
     },
     {
         "id": "3",
         "title": "Bitcoin News",
         "image": "assets/images/feed/bitcoinNews.png",
-        "description": "Bitcoin.com is the world's premier 24/7 news feed covering everything bitcoin-related.",
+        "description": "BitcoinNewsDesc",
         "urlRss": "https://news.bitcoin.com/feed/"
     },
     {
         "id": "4",
         "title": "News BTC",
         "image": "assets/images/feed/NewsBTC.png",
-        "description": "ewsBTC is a news service that covers bitcoin news, technical analysis and forecasts for bitcoin and other altcoins.",
+        "description": "NewsBTC",
         "urlRss": "https://www.newsbtc.com/feed/"
     }
 ]

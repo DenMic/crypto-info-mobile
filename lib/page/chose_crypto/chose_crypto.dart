@@ -1,8 +1,11 @@
 import 'package:crypto_info/common/client/assets_client.dart';
+import 'package:crypto_info/common/state/setting_provider.dart';
 import 'package:crypto_info/page/home/component/crypto_list_item.dart';
 import 'package:crypto_info/model/crypto_asset.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChoseCrypto extends StatefulWidget {
   ChoseCrypto({Key key}) : super(key: key);
@@ -58,52 +61,69 @@ class _ChoseCryptoState extends State<ChoseCrypto> {
             ));
           }
 
-          return Stack(children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 55.0),
-              child: Container(
-                child: ListView(
-                  padding: const EdgeInsets.all(10),
-                  children: cryptoList,
+          return Consumer<SettingProvider>(
+            builder: (context, setting, child) {
+              return Localizations.override(
+                context: context,
+                locale: Locale(setting.lang),
+                // Using a Builder here to get the correct BuildContext.
+                child: Builder(
+                  builder: (BuildContext context) {
+                    return Stack(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 55.0),
+                          child: Container(
+                            child: ListView(
+                              padding: const EdgeInsets.all(10),
+                              children: cryptoList,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                              ),
+                            ],
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 17.0, top: 10, bottom: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                GestureDetector(
+                                  onTap: () => Navigator.pop(context),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 10.0),
+                                    child: Icon(Icons.arrow_back_outlined),
+                                  ),
+                                ),
+                                Text(
+                                  AppLocalizations.of(context).favoriteCrypto,
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                Container(
+                                  height: 35,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                  ),
-                ],
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 17.0, top: 10, bottom: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      onTap: () => Navigator.pop(context),
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10.0),
-                        child: Icon(Icons.arrow_back_outlined),
-                      ),
-                    ),
-                    Text(
-                      "Crypto preference",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-                    ),
-                    Container(
-                      height: 35,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ]);
+              );
+            },
+          );
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
         }

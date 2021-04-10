@@ -32,7 +32,7 @@ class _FeedComponentState extends State<FeedComponent> {
                 rightWidget: null,
               ),
               Container(
-                height: 250,
+                height: 280,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: feeds.length,
