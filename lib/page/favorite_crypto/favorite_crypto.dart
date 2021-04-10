@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:crypto_info/common/client/assets_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:crypto_info/page/chose_crypto/chose_crypto.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FavoriteCrypto extends StatefulWidget {
   FavoriteCrypto({Key key}) : super(key: key);
@@ -125,7 +126,7 @@ class _FavoriteCryptoState extends State<FavoriteCrypto> {
         mainAxisSize: MainAxisSize.max,
         children: [
           HeaderTitle(
-            title: "Favorite crypto",
+            title: AppLocalizations.of(context).favoriteCrypto,
             rightWidget: MaterialButton(
               minWidth: 0,
               height: 35,

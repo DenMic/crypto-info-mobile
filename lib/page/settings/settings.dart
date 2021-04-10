@@ -2,6 +2,7 @@ import 'package:crypto_info/common/component/header_title.dart';
 import 'package:crypto_info/common/settings_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsPage extends StatefulWidget {
   SettingsPage({Key key}) : super(key: key);
@@ -45,7 +46,7 @@ class _SettingsPageState extends State<SettingsPage> {
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          HeaderTitle(title: "Settings", rightWidget: null),
+          HeaderTitle(title: AppLocalizations.of(context).settings, rightWidget: null),
           Expanded(
             child: ListView(
               children: [
@@ -57,7 +58,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Currency"),
+                            Text(AppLocalizations.of(context).currency),
                             DropdownButton(
                               elevation: 15,
                               value: _valueCurrency,
@@ -86,7 +87,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Language"),
+                            Text(AppLocalizations.of(context).language),
                             DropdownButton(
                               elevation: 15,
                               value: _valueLanguage,

@@ -3,6 +3,7 @@ import 'package:crypto_info/page/rss_feed/component/post_list.dart';
 import 'package:crypto_info/page/rss_feed/component/post_all_feed.dart';
 import 'package:crypto_info/common/component/header_title.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RssFeedPage extends StatefulWidget {
   final int idFeed;
@@ -54,7 +55,7 @@ class _RssFeedPageState extends State<RssFeedPage> {
                   child: childWidget,
                 ),
                 HeaderTitle(
-                  title: "Rss Feed",
+                  title: AppLocalizations.of(context).rssFeed,
                   rightWidget: MaterialButton(
                     minWidth: 0,
                     height: 35,

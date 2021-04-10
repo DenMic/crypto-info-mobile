@@ -108,7 +108,7 @@ class _BasePageState extends State<BasePage> {
               FavoriteCrypto(),
               RssFeedPage(idFeed: _idFeed),
               // CalculateCrypto(),
-              SafeArea(child: Text(AppLocalizations.of(context).helloWorld)),
+              // SafeArea(child: Text(AppLocalizations.of(context).)),
               SettingsPage(),
             ]),
             bottomNavigationBar: SnakeNavigationBar.color(
@@ -138,8 +138,8 @@ class _BasePageState extends State<BasePage> {
                     icon: Icon(Icons.favorite), label: 'favorite'),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.rss_feed), label: 'RSS'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.calculate), label: 'Calculate'),
+                // BottomNavigationBarItem(
+                //     icon: Icon(Icons.calculate), label: 'Calculate'),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.settings), label: 'Settings'),
               ],

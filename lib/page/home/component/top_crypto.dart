@@ -3,6 +3,7 @@ import 'package:crypto_info/common/component/header_title.dart';
 import 'package:crypto_info/page/home/component/crypto_list_item.dart';
 import 'package:crypto_info/model/crypto_asset.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TopCrypto extends StatefulWidget {
   TopCrypto({Key key}) : super(key: key);
@@ -47,7 +48,7 @@ class _TopCryptoState extends State<TopCrypto> {
               ),
             ),
             HeaderTitle(
-              title: "Top Asserts",
+              title: AppLocalizations.of(context).topAsserts,
               rightWidget: Row(
                 children: [
                   MaterialButton(

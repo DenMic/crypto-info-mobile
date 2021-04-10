@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:crypto_info/common/component/header_title.dart';
 import 'package:crypto_info/model/feed_model.dart';
 import 'package:crypto_info/page/home/component/feed_card.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FeedComponent extends StatefulWidget {
   final Function changePage;
@@ -27,7 +28,7 @@ class _FeedComponentState extends State<FeedComponent> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               HeaderTitle(
-                title: "News",
+                title: AppLocalizations.of(context).news,
                 rightWidget: null,
               ),
               Container(

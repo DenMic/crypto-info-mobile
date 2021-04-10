@@ -1,6 +1,9 @@
 {
-  "helloWorld": "Hello World!",
-  "@helloWorld": {
-    "description": "The conventional newborn programmer greeting"
-  }
+  "topAsserts": "Top Asserts",
+  "news": "News",
+  "favoriteCrypto": "Favorite Crypto",
+  "rssFeed": "Rss Feed",
+  "settings": "Settings",
+  "currency": "Currency",
+  "language": "Language"
 }

@@ -1,3 +1,9 @@
 {
-  "helloWorld": "Ciao mondo"
+  "topAsserts": "Migliori Assert",
+  "news": "Notizie",
+  "favoriteCrypto": "Crypto Preferite",
+  "rssFeed": "Rss Feed",
+  "settings": "Impostazioni",
+  "currency": "Valuta",
+  "language": "Lingua"
 }
