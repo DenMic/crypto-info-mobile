@@ -10,6 +10,9 @@ import 'package:global_configuration/global_configuration.dart';
 import 'package:crypto_info/common/settings_preference.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+import 'common/state/setting_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +25,12 @@ void main() async {
 
   GlobalConfiguration().loadFromMap(appSettingsMap);
 
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => SettingProvider(currency: appSettingsMap["currency"], language: appSettingsMap["lang"]),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -30,10 +38,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      localizationsDelegates:
-          AppLocalizations.localizationsDelegates, // Add this line
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-
       title: 'Crypto Info',
       themeMode: ThemeMode.system,
       theme: ThemeData(
@@ -91,62 +97,67 @@ class _BasePageState extends State<BasePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Localizations.override(
-      context: context,
-      locale: Locale(_valueLanguage),
-      // Using a Builder here to get the correct BuildContext.
-      child: Builder(
-        builder: (BuildContext context) {
-          return Scaffold(
-            // appBar: AppBar(
-            //   iconTheme: IconThemeData(color: Colors.black),
-            //   backgroundColor: Colors.white,
-            //   title: Text(widget.title, style: TextStyle(color: Colors.black)),
-            // ),
-            body: PageView(controller: _pageController, children: [
-              Home(changePage: _goToFeed),
-              FavoriteCrypto(),
-              RssFeedPage(idFeed: _idFeed),
-              // CalculateCrypto(),
-              // SafeArea(child: Text(AppLocalizations.of(context).)),
-              SettingsPage(),
-            ]),
-            bottomNavigationBar: SnakeNavigationBar.color(
-              elevation: 15,
-              behaviour: SnakeBarBehaviour.pinned,
-              snakeShape: SnakeShape.indicator,
-              shape: null,
-              shadowColor: Colors.black,
-              padding: EdgeInsets.zero,
+    return Consumer<SettingProvider>(
+      builder: (context, setting, child) {
+        return Localizations.override(
+          context: context,
+          locale: Locale(setting.lang),
+          // Using a Builder here to get the correct BuildContext.
+          child: Builder(
+            builder: (BuildContext context) {
+              return Scaffold(
+                // appBar: AppBar(
+                //   iconTheme: IconThemeData(color: Colors.black),
+                //   backgroundColor: Colors.white,
+                //   title: Text(widget.title, style: TextStyle(color: Colors.black)),
+                // ),
+                body: PageView(controller: _pageController, children: [
+                  Home(changePage: _goToFeed),
+                  FavoriteCrypto(),
+                  RssFeedPage(idFeed: _idFeed),
+                  // CalculateCrypto(),
+                  // SafeArea(child: Text(AppLocalizations.of(context).)),
+                  SettingsPage(),
+                ]),
+                bottomNavigationBar: SnakeNavigationBar.color(
+                  elevation: 15,
+                  behaviour: SnakeBarBehaviour.pinned,
+                  snakeShape: SnakeShape.indicator,
+                  shape: null,
+                  shadowColor: Colors.black,
+                  padding: EdgeInsets.zero,
 
-              ///configuration for SnakeNavigationBar.color
-              snakeViewColor: Colors.black,
-              selectedItemColor: SnakeShape.indicator == SnakeShape.indicator
-                  ? Colors.black
-                  : null,
-              unselectedItemColor: Colors.blueGrey,
+                  ///configuration for SnakeNavigationBar.color
+                  snakeViewColor: Colors.black,
+                  selectedItemColor:
+                      SnakeShape.indicator == SnakeShape.indicator
+                          ? Colors.black
+                          : null,
+                  unselectedItemColor: Colors.blueGrey,
 
-              showUnselectedLabels: false,
-              showSelectedLabels: false,
+                  showUnselectedLabels: false,
+                  showSelectedLabels: false,
 
-              currentIndex: _selectedIndex,
-              onTap: _onItemTapped,
-              items: [
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.home), label: 'Top Crypto'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.favorite), label: 'favorite'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.rss_feed), label: 'RSS'),
-                // BottomNavigationBarItem(
-                //     icon: Icon(Icons.calculate), label: 'Calculate'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.settings), label: 'Settings'),
-              ],
-            ),
-          );
-        },
-      ),
+                  currentIndex: _selectedIndex,
+                  onTap: _onItemTapped,
+                  items: [
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.home), label: 'Top Crypto'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.favorite), label: 'favorite'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.rss_feed), label: 'RSS'),
+                    // BottomNavigationBarItem(
+                    //     icon: Icon(Icons.calculate), label: 'Calculate'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.settings), label: 'Settings'),
+                  ],
+                ),
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }

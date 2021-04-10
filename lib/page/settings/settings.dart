@@ -1,8 +1,10 @@
 import 'package:crypto_info/common/component/header_title.dart';
 import 'package:crypto_info/common/settings_preference.dart';
+import 'package:crypto_info/common/state/setting_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class SettingsPage extends StatefulWidget {
   SettingsPage({Key key}) : super(key: key);
@@ -22,18 +24,18 @@ class _SettingsPageState extends State<SettingsPage> {
     _valueLanguage = GlobalConfiguration().get("lang");
   }
 
-  void setCurrency(String value) {
-    SettingsPreference.setSharedSettings(currency: value);
-    GlobalConfiguration().updateValue("currency", value);
+  void setCurrency(String value, BuildContext context) {
+    var setProvider = context.read<SettingProvider>();
+    setProvider.setCurrency(value);
 
     setState(() {
       _valueCurrency = value;
     });
   }
 
-  void setLanguage(String value) {
-    SettingsPreference.setSharedSettings(lang: value);
-    GlobalConfiguration().updateValue("lang", value);
+  void setLanguage(String value, BuildContext context) {
+    var setProvider = context.read<SettingProvider>();
+    setProvider.setLanguage(value);
 
     setState(() {
       _valueLanguage = value;
@@ -46,7 +48,8 @@ class _SettingsPageState extends State<SettingsPage> {
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          HeaderTitle(title: AppLocalizations.of(context).settings, rightWidget: null),
+          HeaderTitle(
+              title: AppLocalizations.of(context).settings, rightWidget: null),
           Expanded(
             child: ListView(
               children: [
@@ -62,7 +65,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             DropdownButton(
                               elevation: 15,
                               value: _valueCurrency,
-                              onChanged: (value) => setCurrency(value),
+                              onChanged: (value) => setCurrency(value, context),
                               underline: Container(
                                 height: 1,
                                 color: Colors.grey,
@@ -91,7 +94,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             DropdownButton(
                               elevation: 15,
                               value: _valueLanguage,
-                              onChanged: (value) => setLanguage(value),
+                              onChanged: (value) => setLanguage(value, context),
                               underline: Container(
                                 height: 1,
                                 color: Colors.grey,
