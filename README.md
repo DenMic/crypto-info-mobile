@@ -38,8 +38,10 @@ The app has a list of the best Asserts of the moment, a list of your favorite as
 
 <br /><br />
 
-On the settings page you can choose your currency (EUR or USD), and your language (TODO).
+On the settings page you can choose your currency (EUR or USD), and your language ("it" or "en").
+
 <br /><br />
+
 <img src="assets\images\readme\Settings.png" alt="Home Page" width="300"/>
 
 ## Getting Started
