@@ -51,7 +51,8 @@ class _SettingsPageState extends State<SettingsPage> {
           HeaderTitle(
               title: AppLocalizations.of(context).settings, rightWidget: null),
           Expanded(
-            child: ListView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Card(
                   child: Padding(
@@ -116,6 +117,18 @@ class _SettingsPageState extends State<SettingsPage> {
                           ],
                         ),
                       ],
+                    ),
+                  ),
+                ),
+                Card(
+                  color: Color.fromRGBO(255, 255, 255, 0.8),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Text(
+                      AppLocalizations.of(context).infoApp,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold
+                      ),
                     ),
                   ),
                 ),

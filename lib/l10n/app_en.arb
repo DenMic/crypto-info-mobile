@@ -17,5 +17,6 @@
   "cointelegraphDesc": "Bitcoin & Ethereum news, analysis and review about technology, finance, blockchain and markets - cryptocurrency news.",
   "coinbaseBlogDesc": "Coinbase is a digital currency wallet and platform where merchants and consumers can transact with new digital currencies like bitcoin and ethereum.",
   "bitcoinNewsDesc": "Bitcoin.com is the world's premier 24/7 news feed covering everything bitcoin-related.",
-  "newsBTC": "NewsBTC is a news service that covers bitcoin news, technical analysis and forecasts for bitcoin and other altcoins."
+  "newsBTC": "NewsBTC is a news service that covers bitcoin news, technical analysis and forecasts for bitcoin and other altcoins.",
+  "infoApp": "The processed data are over 1000 crypto in real-time, extracted with CoinCap's free api.\n\nThe application code is open source, hosted on github (User: DenMic, Repository: crypto-info-mobile).\n\nFor new requests or bugs, please enter a new ticket on github and I will try to fulfill your wishes.\n\nThank you for everything"
 }
