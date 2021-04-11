@@ -35,19 +35,24 @@ class FeedCard extends StatelessWidget {
                 height: 80,
                 width: 180,
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 0,
-                          blurRadius: 3,
-                          offset: Offset(0, 1))
-                    ],
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(5),
-                        topRight: Radius.circular(5)),
-                    image: DecorationImage(
-                        image: AssetImage(feedModel.image), fit: BoxFit.cover)),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 0,
+                      blurRadius: 3,
+                      offset: Offset(0, 1),
+                    ),
+                  ],
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(5),
+                    topRight: Radius.circular(5),
+                  ),
+                  image: DecorationImage(
+                    image: AssetImage(feedModel.image),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
@@ -71,8 +76,8 @@ class FeedCard extends StatelessWidget {
     );
   }
 
-  String getCorrectDesc(String val, BuildContext context){
-    switch(val) {
+  String getCorrectDesc(String val, BuildContext context) {
+    switch (val) {
       case "CointelegraphDesc":
         return AppLocalizations.of(context).cointelegraphDesc;
 
