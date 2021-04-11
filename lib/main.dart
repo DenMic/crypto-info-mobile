@@ -4,6 +4,7 @@ import 'package:crypto_info/page/favorite_crypto/favorite_crypto.dart';
 import 'package:crypto_info/page/calculate/calculate.dart';
 import 'package:crypto_info/page/home/home.dart';
 import 'package:crypto_info/page/settings/settings.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:global_configuration/global_configuration.dart';
@@ -27,7 +28,9 @@ void main() async {
 
   runApp(
     ChangeNotifierProvider(
-      create: (context) => SettingProvider(currency: appSettingsMap["currency"], language: appSettingsMap["lang"]),
+      create: (context) => SettingProvider(
+          currency: appSettingsMap["currency"],
+          language: appSettingsMap["lang"]),
       child: MyApp(),
     ),
   );
@@ -71,15 +74,19 @@ class _BasePageState extends State<BasePage> {
     _valueLanguage = GlobalConfiguration().get("lang") ?? 'en';
   }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-      _pageController.animateToPage(
-        index,
-        duration: const Duration(milliseconds: 400),
-        curve: Curves.easeInOut,
+  void _onChangePage(int index) {
+    if (_selectedIndex != index) {
+      setState(
+        () {
+          _selectedIndex = index;
+          _pageController.animateToPage(
+            index,
+            duration: const Duration(milliseconds: 400),
+            curve: Curves.easeInOut,
+          );
+        },
       );
-    });
+    }
   }
 
   void _goToFeed(int index, int idFeed) {
@@ -111,14 +118,18 @@ class _BasePageState extends State<BasePage> {
                 //   backgroundColor: Colors.white,
                 //   title: Text(widget.title, style: TextStyle(color: Colors.black)),
                 // ),
-                body: PageView(controller: _pageController, children: [
-                  Home(changePage: _goToFeed),
-                  FavoriteCrypto(),
-                  RssFeedPage(idFeed: _idFeed),
-                  // CalculateCrypto(),
-                  // SafeArea(child: Text(AppLocalizations.of(context).)),
-                  SettingsPage(),
-                ]),
+                body: PageView(
+                    controller: _pageController,
+                    physics: NeverScrollableScrollPhysics(),
+                    pageSnapping: true,
+                    children: [
+                      Home(changePage: _goToFeed),
+                      FavoriteCrypto(),
+                      RssFeedPage(idFeed: _idFeed),
+                      // CalculateCrypto(),
+                      // SafeArea(child: Text(AppLocalizations.of(context).)),
+                      SettingsPage(),
+                    ]),
                 bottomNavigationBar: SnakeNavigationBar.color(
                   elevation: 15,
                   behaviour: SnakeBarBehaviour.pinned,
@@ -139,7 +150,7 @@ class _BasePageState extends State<BasePage> {
                   showSelectedLabels: false,
 
                   currentIndex: _selectedIndex,
-                  onTap: _onItemTapped,
+                  onTap: _onChangePage,
                   items: [
                     BottomNavigationBarItem(
                         icon: Icon(Icons.home), label: 'Top Crypto'),
