@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webfeed/webfeed.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PostCard extends StatefulWidget {
   final RssItem rssItem;
@@ -58,12 +58,30 @@ class _PostCardState extends State<PostCard> {
                       fit: BoxFit.cover),
                 ),
               ),
+               Padding(
+                padding: const EdgeInsets.only(
+                    top: 5.0, left: 10.0, right: 10.0, bottom: 5.0),
+                child: Text(
+                  "${widget.rssItem.link}",
+                  style: TextStyle(fontSize: 10, color: Colors.grey),
+                  textAlign: TextAlign.center,
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.only(
-                    top: 15.0, left: 10.0, right: 10.0, bottom: 10.0),
+                    top: 0.0, left: 10.0, right: 10.0, bottom: 10.0),
                 child: Text(
                   "${widget.rssItem.title}",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 0.0, left: 10.0, right: 10.0, bottom: 10.0),
+                child: Text(
+                  AppLocalizations.of(context).author + " ${widget.rssItem.dc.creator}",
+                  style: TextStyle(fontSize: 10, color: Colors.grey),
                   textAlign: TextAlign.center,
                 ),
               ),
