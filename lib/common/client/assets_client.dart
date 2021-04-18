@@ -68,16 +68,10 @@ Future<List<CryptoHistory>> getHisotryAssetAsync({String idAsset, String interva
 Future<List<CryptoAsset>> getListCryptoAssetAsync({List<String> idAssets}) async {
   List<CryptoAsset> assets = [];
 
+  var cryptoAssets = await fetchAssetsAsync(limit: null);
   for(var idAsset in idAssets) {
-    final request = http.Request('GET', Uri.parse('https://api.coincap.io/v2/assets/$idAsset'));
-    http.StreamedResponse response = await request.send();
-
-    if (response.statusCode == 200) {
-      final stringResponse = await response.stream.bytesToString();
-      var jsonVal = json.decode(stringResponse) as Map<String, dynamic>;
-      assets.add(CryptoAsset.fromJson(jsonVal.values.first));
-
-    }
+    var crypto = cryptoAssets.firstWhere((element) => element.id == idAsset);
+    assets.add(crypto);
   }
 
   return assets;
