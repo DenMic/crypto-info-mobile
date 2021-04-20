@@ -137,16 +137,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     style: TextStyle(color: Colors.grey[700]),
                   ),
                 ),
-                // Card(
-                //   color: Color.fromRGBO(255, 255, 255, 0.8),
-                //   child: Padding(
-                //     padding: const EdgeInsets.all(15.0),
-                //     child: Text(
-                //       AppLocalizations.of(context).infoApp,
-                //       style: TextStyle(fontWeight: FontWeight.bold),
-                //     ),
-                //   ),
-                // ),
               ],
             ),
           ),
@@ -166,15 +156,6 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
         ),
       ]
-      // actions: <Widget>[
-      //   MaterialButton(
-      //     onPressed: () {
-      //       Navigator.of(context).pop();
-      //     },
-      //     textColor: Theme.of(context).primaryColor,
-      //     child: const Text('Close'),
-      //   ),
-      // ],
     );
   }
 }
