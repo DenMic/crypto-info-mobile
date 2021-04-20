@@ -52,7 +52,7 @@ class _SettingsPageState extends State<SettingsPage> {
               title: AppLocalizations.of(context).settings, rightWidget: null),
           Expanded(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Card(
                   child: Padding(
@@ -120,23 +120,61 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                 ),
-                Card(
-                  color: Color.fromRGBO(255, 255, 255, 0.8),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Text(
-                      AppLocalizations.of(context).infoApp,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold
-                      ),
-                    ),
+                MaterialButton(
+                  minWidth: MediaQuery.of(context).size.width - 15,
+                  height: 35,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  color: Colors.white,
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          _buildPopupDialog(context),
+                    );
+                  },
+                  child: Text(
+                    AppLocalizations.of(context).info,
+                    style: TextStyle(color: Colors.grey[700]),
                   ),
                 ),
+                // Card(
+                //   color: Color.fromRGBO(255, 255, 255, 0.8),
+                //   child: Padding(
+                //     padding: const EdgeInsets.all(15.0),
+                //     child: Text(
+                //       AppLocalizations.of(context).infoApp,
+                //       style: TextStyle(fontWeight: FontWeight.bold),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildPopupDialog(BuildContext context) {
+    return SimpleDialog(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Text(
+                AppLocalizations.of(context).infoApp,
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+        ),
+      ]
+      // actions: <Widget>[
+      //   MaterialButton(
+      //     onPressed: () {
+      //       Navigator.of(context).pop();
+      //     },
+      //     textColor: Theme.of(context).primaryColor,
+      //     child: const Text('Close'),
+      //   ),
+      // ],
     );
   }
 }
