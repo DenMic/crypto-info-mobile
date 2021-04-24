@@ -1,10 +1,12 @@
 import 'package:crypto_info/common/component/header_title.dart';
 import 'package:crypto_info/common/settings_preference.dart';
 import 'package:crypto_info/common/state/setting_provider.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsPage extends StatefulWidget {
   SettingsPage({Key key}) : super(key: key);
@@ -150,12 +152,42 @@ class _SettingsPageState extends State<SettingsPage> {
       children: [
         Padding(
           padding: const EdgeInsets.all(15.0),
-          child: Text(
-                AppLocalizations.of(context).infoApp,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-        ),
-      ]
+          child: RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: AppLocalizations.of(context).infoAppOne,
+                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                ),
+                
+                textLink('https://cointelegraph.com/about'),
+                textLink('https://blog.coinbase.com/about'),
+                textLink('https://news.bitcoin.com/about-bitcoin-news/'),
+                textLink('https://www.newsbtc.com/about/'),
+
+                TextSpan(
+                  text: '\n${AppLocalizations.of(context).infoAppTwo}',
+                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                ),
+              ],
+            ),
+          ),
+        )
+      ],
     );
+  }
+
+  TextSpan textLink(String link) {
+    return TextSpan(
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.blue,),
+                text: '\n$link',
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () async {
+                    if (await canLaunch(link)) {
+                      await launch(link);
+                    }
+                  },
+              );
   }
 }
