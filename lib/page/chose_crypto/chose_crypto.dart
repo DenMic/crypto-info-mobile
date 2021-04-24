@@ -16,6 +16,10 @@ class ChoseCrypto extends StatefulWidget {
 
 class _ChoseCryptoState extends State<ChoseCrypto> {
   List<String> _favoriteCrypto;
+  List<CryptoListItem> cryptoList;
+  List<CryptoListItem> favoriteCrypto;
+  String textSearch = '';
+  bool searchValue = false;
 
   @override
   void initState() {
@@ -52,14 +56,24 @@ class _ChoseCryptoState extends State<ChoseCrypto> {
       future: fetchAssetsAsync(limit: null),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<Widget> cryptoList = [];
+          
+          if(!searchValue) {
+            cryptoList = [];
 
-          for (var crypto in snapshot.data) {
-            cryptoList.add(CryptoListItem(
-              crypto: crypto,
-              preference: true,
-            ));
+            for (var crypto in snapshot.data) {
+              cryptoList.add(CryptoListItem(
+                crypto: crypto,
+                preference: true,
+              ));
+            }
+
+            favoriteCrypto = cryptoList;
           }
+
+          var _controller = TextEditingController(
+            text: textSearch,
+          );
+          _controller.selection = TextSelection.fromPosition(TextPosition(offset: _controller.text.length));
 
           return Consumer<SettingProvider>(
             builder: (context, setting, child) {
@@ -72,11 +86,40 @@ class _ChoseCryptoState extends State<ChoseCrypto> {
                     return Stack(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 55.0),
+                            padding: const EdgeInsets.only(
+                                top: 65.0, left: 15, right: 15),
+                            child: TextField(
+                              controller: _controller,
+                              onEditingComplete: () => {
+                                if (_controller.text.length >= 3) {
+                                  setState(() {
+                                    textSearch = _controller.text;
+                                    searchValue = true;
+                                    favoriteCrypto = cryptoList.where((element) => element.crypto.name.toLowerCase().startsWith(_controller.text)).toList();
+                                  })
+                                }
+                              },
+                              decoration: InputDecoration(
+                                hintText: "Enter crypto name",
+                                suffixIcon: IconButton(
+                                  onPressed: () {
+                                    _controller.clear();
+
+                                    setState(() {
+                                      textSearch = '';
+                                      searchValue = false;
+                                    });
+                                  },
+                                  icon: Icon(Icons.clear),
+                                ),
+                              ),
+                            )),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 115.0),
                           child: Container(
                             child: ListView(
                               padding: const EdgeInsets.all(10),
-                              children: cryptoList,
+                              children: favoriteCrypto,
                             ),
                           ),
                         ),

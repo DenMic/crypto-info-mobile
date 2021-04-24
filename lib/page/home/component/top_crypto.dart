@@ -40,11 +40,12 @@ class _TopCryptoState extends State<TopCrypto> {
               child: Container(
                 height: heightLV,
                 child: ListView.builder(
-                    padding: const EdgeInsets.all(10),
-                    itemCount: snapshot.data.length,
-                    itemBuilder: (context, index) {
-                      return CryptoListItem(crypto: snapshot.data[index]);
-                    }),
+                  padding: const EdgeInsets.all(10),
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (context, index) {
+                    return CryptoListItem(crypto: snapshot.data[index]);
+                  },
+                ),
               ),
             ),
             HeaderTitle(
