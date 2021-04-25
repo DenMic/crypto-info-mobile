@@ -47,30 +47,26 @@ class _RssFeedPageState extends State<RssFeedPage> {
           }
 
           // return childWidget;
-          return SafeArea(
-            child: Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 55.0),
-                  child: childWidget,
-                ),
-                HeaderTitle(
-                  title: AppLocalizations.of(context).rssFeed,
-                  rightWidget: MaterialButton(
-                    minWidth: 0,
-                    height: 35,
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    color: Colors.white,
-                    shape: CircleBorder(),
-                    onPressed: () => viewAllFeed(),
-                    child: Text(
-                      'All',
-                      style: TextStyle(color: Colors.grey[700], fontSize: 12),
-                    ),
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              title: HeaderTitle(
+                title: AppLocalizations.of(context).rssFeed,
+                rightWidget: MaterialButton(
+                  minWidth: 0,
+                  height: 35,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  color: Colors.white,
+                  shape: CircleBorder(),
+                  onPressed: () => viewAllFeed(),
+                  child: Text(
+                    'All',
+                    style: TextStyle(color: Colors.grey[700], fontSize: 12),
                   ),
                 ),
-              ],
+              ),
             ),
+            body: childWidget,
           );
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");

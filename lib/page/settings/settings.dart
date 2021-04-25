@@ -46,12 +46,17 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: HeaderTitle(
+          title: AppLocalizations.of(context).settings,
+          rightWidget: null,
+        ),
+      ),
+      body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          HeaderTitle(
-              title: AppLocalizations.of(context).settings, rightWidget: null),
           Expanded(
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -157,17 +162,17 @@ class _SettingsPageState extends State<SettingsPage> {
               children: [
                 TextSpan(
                   text: AppLocalizations.of(context).infoAppOne,
-                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),
                 ),
-                
                 textLink('https://cointelegraph.com/about'),
                 textLink('https://blog.coinbase.com/about'),
                 textLink('https://news.bitcoin.com/about-bitcoin-news/'),
                 textLink('https://www.newsbtc.com/about/'),
-
                 TextSpan(
                   text: '\n${AppLocalizations.of(context).infoAppTwo}',
-                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),
                 ),
               ],
             ),
@@ -179,15 +184,17 @@ class _SettingsPageState extends State<SettingsPage> {
 
   TextSpan textLink(String link) {
     return TextSpan(
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.blue,),
-                text: '\n$link',
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () async {
-                    if (await canLaunch(link)) {
-                      await launch(link);
-                    }
-                  },
-              );
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Colors.blue,
+      ),
+      text: '\n$link',
+      recognizer: TapGestureRecognizer()
+        ..onTap = () async {
+          if (await canLaunch(link)) {
+            await launch(link);
+          }
+        },
+    );
   }
 }

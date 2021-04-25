@@ -15,34 +15,19 @@ class HeaderTitle extends StatelessWidget {
       );
     }
 
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 17.0),
+          child: Text(
+            this.title,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
           ),
-        ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 10.0, top: 10.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 17.0),
-              child: Text(
-                this.title,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-              ),
-            ),
-            Spacer(),
-            wdg
-          ],
         ),
-      ),
+        Spacer(),
+        wdg
+      ],
     );
   }
 }

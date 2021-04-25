@@ -14,7 +14,7 @@ class TopCrypto extends StatefulWidget {
 
 class _TopCryptoState extends State<TopCrypto> {
   Future<List<CryptoAsset>> futureCryptos;
-  int limit = 10;
+  int limit = 30;
 
   void _changeLimit(int newLimit) {
     if (limit != newLimit) {
@@ -34,64 +34,16 @@ class _TopCryptoState extends State<TopCrypto> {
         final heightLV = MediaQuery.of(context).size.height * 0.50;
 
         if (snapshot.hasData) {
-          return Stack(children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 55.0),
-              child: Container(
-                height: heightLV,
-                child: ListView.builder(
-                  padding: const EdgeInsets.all(10),
-                  itemCount: snapshot.data.length,
-                  itemBuilder: (context, index) {
-                    return CryptoListItem(crypto: snapshot.data[index]);
-                  },
-                ),
-              ),
+          return Container(
+            height: heightLV,
+            child: ListView.builder(
+              padding: const EdgeInsets.all(10),
+              itemCount: snapshot.data.length,
+              itemBuilder: (context, index) {
+                return CryptoListItem(crypto: snapshot.data[index]);
+              },
             ),
-            HeaderTitle(
-              title: AppLocalizations.of(context).topAsserts,
-              rightWidget: Row(
-                children: [
-                  MaterialButton(
-                    minWidth: 0,
-                    height: 35,
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    color: limit == 10 ? Colors.grey[350] : Colors.white,
-                    shape: CircleBorder(),
-                    onPressed: () => _changeLimit(10),
-                    child: Text(
-                      '10',
-                      style: TextStyle(color: Colors.grey[700], fontSize: 12),
-                    ),
-                  ),
-                  MaterialButton(
-                    minWidth: 0,
-                    height: 35,
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    color: limit == 15 ? Colors.grey[350] : Colors.white,
-                    shape: CircleBorder(),
-                    onPressed: () => _changeLimit(15),
-                    child: Text(
-                      '15',
-                      style: TextStyle(color: Colors.grey[700], fontSize: 12),
-                    ),
-                  ),
-                  MaterialButton(
-                    minWidth: 0,
-                    height: 35,
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    color: limit == 30 ? Colors.grey[350] : Colors.white,
-                    shape: CircleBorder(),
-                    onPressed: () => _changeLimit(30),
-                    child: Text(
-                      '30',
-                      style: TextStyle(color: Colors.grey[700], fontSize: 12),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ]);
+          );
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
         }

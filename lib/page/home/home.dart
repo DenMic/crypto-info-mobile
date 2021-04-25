@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:crypto_info/page/home/component/top_crypto.dart';
 import 'package:crypto_info/page/home/component/feed_component.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Home extends StatefulWidget {
   final Function changePage;
@@ -14,13 +15,19 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    
-    return ListView(
-      children: [
-        TopCrypto(),
-        FeedComponent(changePage: widget.changePage)
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text(
+          AppLocalizations.of(context).topAsserts,
+        ),
+      ),
+      body: ListView(
+        children: [
+          TopCrypto(),
+          FeedComponent(changePage: widget.changePage),
+        ],
+      ),
     );
   }
-
 }

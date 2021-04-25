@@ -121,34 +121,27 @@ class _FavoriteCryptoState extends State<FavoriteCrypto> {
           });
     }
 
-    return SafeArea(
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          HeaderTitle(
-            title: AppLocalizations.of(context).favoriteCrypto,
-            rightWidget: MaterialButton(
-              minWidth: 0,
-              height: 35,
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              color: Colors.white,
-              shape: CircleBorder(),
-              onPressed: () async {
-                await Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ChoseCrypto()),
-                );
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: HeaderTitle(
+          title: AppLocalizations.of(context).favoriteCrypto,
+        ),
+      ),
+      body: SafeArea(
+        child: listCrypto,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChoseCrypto()),
+          );
 
-                _loadCounter();
-              },
-              child: Text(
-                'Add',
-                style: TextStyle(color: Colors.grey[700], fontSize: 12),
-              ),
-            ),
-          ),
-          listCrypto
-        ],
+          _loadCounter();
+        },
+        child: Icon(Icons.add, size: 35,),
+        backgroundColor: Colors.white,
       ),
     );
   }
