@@ -127,7 +127,23 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                 ),
-                
+                MaterialButton(
+                  minWidth: MediaQuery.of(context).size.width - 15,
+                  height: 35,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  color: Colors.white,
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          _buildPopupDialog(context),
+                    );
+                  },
+                  child: Text(
+                    AppLocalizations.of(context).info,
+                    style: TextStyle(color: Colors.grey[700]),
+                  ),
+                ),
               ],
             ),
           ),
