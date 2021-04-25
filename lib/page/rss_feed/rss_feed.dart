@@ -52,21 +52,54 @@ class _RssFeedPageState extends State<RssFeedPage> {
               backgroundColor: Colors.white,
               title: HeaderTitle(
                 title: AppLocalizations.of(context).rssFeed,
-                rightWidget: MaterialButton(
-                  minWidth: 0,
-                  height: 35,
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  color: Colors.white,
-                  shape: CircleBorder(),
-                  onPressed: () => viewAllFeed(),
-                  child: Text(
-                    'All',
-                    style: TextStyle(color: Colors.grey[700], fontSize: 12),
-                  ),
-                ),
               ),
             ),
             body: childWidget,
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                Scaffold.of(context).showBottomSheet<void>(
+                  (BuildContext context) {
+                    var buttonsFeed = feeds;
+                    buttonsFeed.add(new FeedModel(id: -1, title: "All"));
+
+                    return Container(
+                      height: 250,
+                      color: Colors.white,
+                      child: ListView.builder(
+                        itemCount: buttonsFeed.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 0),
+                            child: MaterialButton(
+                              minWidth: MediaQuery.of(context).size.width - 15,
+                              height: 35,
+                              materialTapTargetSize:
+                                  MaterialTapTargetSize.shrinkWrap,
+                              color: Colors.white,
+                              onPressed: () {
+                                setState(() {
+                                  idFeed = buttonsFeed[index].id;
+                                });
+                                Navigator.pop(context);
+                              },
+                              child: Text(
+                                buttonsFeed[index].title,
+                                style: TextStyle(color: Colors.grey[700]),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                  },
+                );
+              },
+              child: Icon(
+                Icons.feed_outlined,
+                size: 35,
+              ),
+              backgroundColor: Colors.white,
+            ),
           );
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
